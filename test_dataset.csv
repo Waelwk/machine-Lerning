@@ -1,0 +1,101 @@
+ID Étudiant,Nom,Sexe,Âge,Temps passé sur la plateforme (heures),Nombre de cours terminés (/10),Résultat aux tests (/100),Nombre de comptes rendus (/10),Type de ressource utilisée,Résultat
+1,Nom_1,Homme,19,32,1,89,7,Articles,Échec
+2,Nom_2,Femme,27,29,5,34,5,"Vidéo, PDF",Échec
+3,Nom_3,Homme,29,37,4,97,1,Vidéo,Échec
+4,Nom_4,Homme,19,5,8,35,7,PDF,Échec
+5,Nom_5,Homme,27,31,8,76,7,"Vidéo, PDF, articles",Réussite
+6,Nom_6,Femme,21,17,7,84,9,Vidéo,Échec
+7,Nom_7,Homme,25,7,3,69,3,Vidéo,Échec
+8,Nom_8,Homme,24,10,1,81,9,"PDF, articles",Échec
+9,Nom_9,Homme,29,12,1,45,1,"Vidéo, PDF, articles",Échec
+10,Nom_10,Femme,26,31,3,42,1,"Vidéo, PDF, articles",Échec
+11,Nom_11,Homme,25,13,6,59,4,Vidéo,Échec
+12,Nom_12,Homme,22,37,7,48,9,"Vidéo, articles",Échec
+13,Nom_13,Homme,19,28,6,46,6,"PDF, articles",Échec
+14,Nom_14,Homme,22,19,6,92,3,"PDF, articles",Échec
+15,Nom_15,Femme,25,36,6,48,1,Articles,Échec
+16,Nom_16,Homme,27,36,3,87,4,"Vidéo, PDF, articles",Échec
+17,Nom_17,Femme,26,28,6,84,9,Vidéo,Réussite
+18,Nom_18,Femme,29,16,8,91,3,Articles,Échec
+19,Nom_19,Femme,29,6,2,52,9,"Vidéo, PDF",Échec
+20,Nom_20,Homme,29,7,5,38,7,PDF,Échec
+21,Nom_21,Femme,26,21,1,41,4,"PDF, articles",Échec
+22,Nom_22,Homme,18,6,1,30,3,"Vidéo, PDF",Échec
+23,Nom_23,Femme,26,6,5,87,10,"Vidéo, PDF",Échec
+24,Nom_24,Femme,24,32,3,30,5,"Vidéo, articles",Échec
+25,Nom_25,Femme,26,27,4,63,5,PDF,Échec
+26,Nom_26,Femme,25,36,3,77,3,"Vidéo, PDF",Échec
+27,Nom_27,Femme,18,37,1,30,9,"Vidéo, PDF",Échec
+28,Nom_28,Femme,29,5,1,45,4,PDF,Échec
+29,Nom_29,Femme,25,23,5,90,5,PDF,Échec
+30,Nom_30,Femme,25,6,6,93,4,"Vidéo, PDF",Échec
+31,Nom_31,Homme,28,30,3,92,5,PDF,Échec
+32,Nom_32,Homme,20,36,9,98,7,"Vidéo, PDF",Réussite
+33,Nom_33,Femme,18,10,5,51,9,"Vidéo, PDF",Échec
+34,Nom_34,Femme,25,36,8,96,7,"Vidéo, articles",Réussite
+35,Nom_35,Femme,20,8,1,55,5,Vidéo,Échec
+36,Nom_36,Homme,20,15,5,45,10,"Vidéo, PDF",Échec
+37,Nom_37,Femme,18,21,3,80,10,Articles,Échec
+38,Nom_38,Homme,28,28,1,86,7,"PDF, articles",Échec
+39,Nom_39,Homme,22,9,4,58,10,"Vidéo, PDF, articles",Échec
+40,Nom_40,Homme,27,38,5,98,5,Vidéo,Échec
+41,Nom_41,Homme,24,10,7,76,3,Vidéo,Échec
+42,Nom_42,Homme,27,26,1,91,7,Vidéo,Échec
+43,Nom_43,Femme,26,15,3,98,2,"Vidéo, articles",Échec
+44,Nom_44,Femme,29,20,2,45,9,"Vidéo, PDF",Échec
+45,Nom_45,Femme,24,37,9,77,10,"Vidéo, articles",Réussite
+46,Nom_46,Femme,26,13,10,68,10,"Vidéo, PDF",Échec
+47,Nom_47,Femme,25,10,6,62,1,"Vidéo, articles",Échec
+48,Nom_48,Homme,29,20,10,52,6,"Vidéo, articles",Échec
+49,Nom_49,Femme,19,33,3,39,7,"PDF, articles",Échec
+50,Nom_50,Femme,18,7,8,98,8,Articles,Échec
+51,Nom_51,Homme,24,24,8,63,10,"Vidéo, articles",Échec
+52,Nom_52,Femme,24,23,2,81,9,"PDF, articles",Échec
+53,Nom_53,Homme,25,30,6,39,2,PDF,Échec
+54,Nom_54,Femme,22,7,7,48,10,Articles,Échec
+55,Nom_55,Homme,20,23,2,87,2,"Vidéo, articles",Échec
+56,Nom_56,Femme,29,24,10,30,5,"Vidéo, PDF, articles",Échec
+57,Nom_57,Femme,25,36,2,98,5,Vidéo,Échec
+58,Nom_58,Homme,23,11,10,33,6,PDF,Échec
+59,Nom_59,Homme,28,37,1,45,3,PDF,Échec
+60,Nom_60,Homme,20,22,8,53,8,"PDF, articles",Échec
+61,Nom_61,Homme,18,5,1,31,1,PDF,Échec
+62,Nom_62,Homme,20,15,9,61,6,Articles,Échec
+63,Nom_63,Homme,22,32,6,53,4,"Vidéo, articles",Échec
+64,Nom_64,Homme,20,29,7,41,1,"Vidéo, articles",Échec
+65,Nom_65,Homme,18,27,10,79,7,"Vidéo, PDF, articles",Réussite
+66,Nom_66,Femme,22,35,7,64,9,Vidéo,Échec
+67,Nom_67,Femme,27,34,10,62,4,"PDF, articles",Échec
+68,Nom_68,Homme,24,39,3,62,4,Vidéo,Échec
+69,Nom_69,Femme,24,11,2,90,6,PDF,Échec
+70,Nom_70,Femme,28,20,9,80,3,"Vidéo, PDF, articles",Échec
+71,Nom_71,Femme,26,30,8,72,6,Vidéo,Réussite
+72,Nom_72,Femme,27,6,10,41,7,Articles,Échec
+73,Nom_73,Homme,27,5,7,96,10,"Vidéo, articles",Échec
+74,Nom_74,Femme,29,16,9,94,10,PDF,Échec
+75,Nom_75,Homme,20,9,4,62,3,"Vidéo, PDF, articles",Échec
+76,Nom_76,Femme,24,36,4,69,7,Vidéo,Échec
+77,Nom_77,Femme,18,13,1,72,3,"PDF, articles",Échec
+78,Nom_78,Femme,21,39,8,73,2,Articles,Échec
+79,Nom_79,Homme,21,23,3,58,10,Articles,Échec
+80,Nom_80,Femme,22,20,7,42,4,Vidéo,Échec
+81,Nom_81,Homme,24,7,2,41,8,"Vidéo, articles",Échec
+82,Nom_82,Femme,24,24,2,75,9,Vidéo,Échec
+83,Nom_83,Homme,28,28,7,31,7,PDF,Échec
+84,Nom_84,Femme,21,37,6,64,1,Vidéo,Échec
+85,Nom_85,Homme,24,28,3,37,3,Articles,Échec
+86,Nom_86,Homme,28,15,9,55,9,"Vidéo, PDF, articles",Échec
+87,Nom_87,Femme,20,12,10,63,1,Vidéo,Échec
+88,Nom_88,Homme,23,24,6,36,9,"Vidéo, articles",Échec
+89,Nom_89,Femme,29,39,10,97,8,"Vidéo, PDF, articles",Réussite
+90,Nom_90,Femme,19,29,10,87,1,"PDF, articles",Échec
+91,Nom_91,Femme,27,39,6,58,6,"Vidéo, PDF",Échec
+92,Nom_92,Femme,26,29,1,65,5,Vidéo,Échec
+93,Nom_93,Femme,22,33,4,50,6,"Vidéo, articles",Échec
+94,Nom_94,Femme,23,22,10,65,10,"Vidéo, PDF, articles",Échec
+95,Nom_95,Femme,29,22,6,39,5,"Vidéo, articles",Échec
+96,Nom_96,Femme,29,6,6,53,6,"PDF, articles",Échec
+97,Nom_97,Femme,29,39,5,93,5,Articles,Échec
+98,Nom_98,Femme,29,20,1,78,5,"Vidéo, articles",Échec
+99,Nom_99,Femme,21,37,8,65,4,"Vidéo, PDF, articles",Échec
+100,Nom_100,Homme,28,8,5,53,3,"Vidéo, articles",Échec

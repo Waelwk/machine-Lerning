@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prédiction de Resultat d'Étudiants</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+    <div class="container">
+        <h2>Prédiction de Resultat d'Étudiants</h2>
+        
+        <form  id="predictionForm" action="/" method="POST">
+            <label for="age">Âge:</label>
+            <input type="number" name="age" value="{{ age }}" required><br>
+        
+            <label for="gender">Sexe:</label>
+            <select name="gender" required>
+                <option value="0" {% if gender == '0' %} selected {% endif %}>Homme</option>
+                <option value="1" {% if gender == '1' %} selected {% endif %}>Femme</option>
+            </select><br>
+        
+            <label for="study_hours">Temps passé sur la plateforme (heures):</label>
+            <input type="number" name="study_hours" value="{{ study_hours }}" required><br>
+        
+            <label for="courses_completed">Nombre de cours terminés (/10):</label>
+            <input type="number" name="courses_completed" value="{{ courses_completed }}" required><br>
+        
+            <label for="test_score">Résultat aux tests (/100):</label>
+            <input type="number" name="test_score" value="{{ test_score }}" required><br>
+        
+            <label for="reports_completed">Nombre de comptes rendus (/10):</label>
+            <input type="number" name="reports_completed" value="{{ reports_completed }}" required><br>
+        
+            <div class="form-actions">
+                <input type="submit" value="Prédire">
+                <button type="button" class="reset-btn" onclick="resetForm()">Réinitialiser</button>
+
+                
+            </div>
+        </form>
+         <!-- Prediction and Feedback Section -->
+         <div class="result-section">
+            <h3>Resultat</h3>
+            <h3 class="outcome">{{ outcome }}</h3>
+        </div>
+       
+    </div>
+    
+
+</body>
+
+<script>
+    function resetForm() {
+        document.getElementById("predictionForm").reset();
+        document.querySelector(".result-section").innerHTML = '<h3></h3>';
+
+    }
+</script>
+</html>
