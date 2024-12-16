@@ -1,61 +1,382 @@
 <!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Prédiction de Resultat d'Étudiants</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-</head>
-<body>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Prédiction des Résultats</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='styles.css') }}"
+    />
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  </head>
+  <body>
+    <div class="container mt-5">
+      <h1 class="text-center mb-4">Prédiction des Résultats des Étudiants</h1>
 
-    <div class="container">
-        <h2>Prédiction de Resultat d'Étudiants</h2>
-        
-        <form  id="predictionForm" action="/" method="POST">
-            <label for="age">Âge:</label>
-            <input type="number" name="age" value="{{ age }}" required><br>
-        
-            <label for="gender">Sexe:</label>
-            <select name="gender" required>
-                <option value="0" {% if gender == '0' %} selected {% endif %}>Homme</option>
-                <option value="1" {% if gender == '1' %} selected {% endif %}>Femme</option>
-            </select><br>
-        
-            <label for="study_hours">Temps passé sur la plateforme (heures):</label>
-            <input type="number" name="study_hours" value="{{ study_hours }}" required><br>
-        
-            <label for="courses_completed">Nombre de cours terminés (/10):</label>
-            <input type="number" name="courses_completed" value="{{ courses_completed }}" required><br>
-        
-            <label for="test_score">Résultat aux tests (/100):</label>
-            <input type="number" name="test_score" value="{{ test_score }}" required><br>
-        
-            <label for="reports_completed">Nombre de comptes rendus (/10):</label>
-            <input type="number" name="reports_completed" value="{{ reports_completed }}" required><br>
-        
-            <div class="form-actions">
-                <input type="submit" value="Prédire">
-                <button type="button" class="reset-btn" onclick="resetForm()">Réinitialiser</button>
+      <!-- Bouton pour ouvrir le formulaire d'ajout -->
+      <button class="btn btn-primary mb-3" onclick="openAddPopup()">
+        Ajouter un étudiant
+      </button>
 
-                
+      <!-- Pop-up pour ajouter un étudiant -->
+      <div id="add-popup" class="popup">
+        <div class="popup-content">
+          <span class="close" onclick="closeAddPopup()">&times;</span>
+          <form action="/add" method="post">
+            <h2>Ajouter un étudiant</h2>
+            <div class="form-group">
+              <label for="name">Nom:</label>
+              <input
+                type="text"
+                class="form-control"
+                id="name"
+                name="name"
+                required
+              />
             </div>
-        </form>
-         <!-- Prediction and Feedback Section -->
-         <div class="result-section">
-            <h3>Resultat</h3>
-            <h3 class="outcome">{{ outcome }}</h3>
+            <div class="form-group">
+              <label for="age">Âge:</label>
+              <input
+                type="number"
+                class="form-control"
+                id="age"
+                name="age"
+                max="25"
+                required
+              />
+              <small id="ageHelp" class="form-text text-muted"
+                >Âge maximum : 25 ans.</small
+              >
+            </div>
+            <div class="form-group">
+              <label for="attempt_number">Numéro de tentative:</label>
+              <input
+                type="number"
+                class="form-control"
+                id="attempt_number"
+                name="attempt_number"
+                required
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="gender">Genre:</label>
+              <select class="form-control" id="gender" name="gender" required>
+                <option value="0">Féminin</option>
+                <option value="1">Masculin</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="study_hours">Heures d'étude:</label>
+              <input
+                type="number"
+                step="0.1"
+                class="form-control"
+                id="study_hours"
+                name="study_hours"
+                max="30"
+                required
+              />
+              <small id="studyHoursHelp" class="form-text text-muted"
+                >Maximum des heures d'étude : 30 heures.</small
+              >
+            </div>
+            <div class="form-group">
+              <label for="assignment_grade">Note de devoir:</label>
+              <input
+                type="number"
+                step="0.1"
+                class="form-control"
+                id="assignment_grade"
+                name="assignment_grade"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="test_score">Score de test:</label>
+              <input
+                type="number"
+                step="0.1"
+                class="form-control"
+                id="test_score"
+                name="test_score"
+                max="20"
+                required
+              />
+              <small id="testScoreHelp" class="form-text text-muted"
+                >Score de test maximum : 20.</small
+              >
+            </div>
+            <div class="form-group">
+              <label for="quiz_score">Score de quiz:</label>
+              <input
+                type="number"
+                step="0.1"
+                class="form-control"
+                id="quiz_score"
+                name="quiz_score"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="final_project_grade">Note de projet final:</label>
+              <input
+                type="number"
+                step="0.1"
+                class="form-control"
+                id="final_project_grade"
+                name="final_project_grade"
+                required
+              />
+            </div>
+            <button type="submit" class="btn btn-success">Ajouter</button>
+          </form>
         </div>
-       
+      </div>
+
+      <!-- Tableau des étudiants -->
+      <table class="table table-bordered">
+        <thead class="thead-light">
+          <tr>
+            <th>ID</th>
+            <th>Nom</th>
+            <th>Âge</th>
+            <th>Genre</th>
+            <th>Heures d'étude</th>
+            <th>Note de devoir</th>
+            <th>Score de test</th>
+            <th>Score de quiz</th>
+            <th>Note de projet final</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for student in students %}
+          <tr>
+            <td>{{ student.id }}</td>
+            <td>{{ student.name }}</td>
+            <td>{{ student.age }}</td>
+            <td>{{ 'Féminin' if student.gender == 0 else 'Masculin' }}</td>
+            <td>{{ student.study_hours }}</td>
+            <td>{{ student.assignment_grade }}</td>
+            <td>{{ student.test_score }}</td>
+            <td>{{ student.quiz_score }}</td>
+            <td>{{ student.final_project_grade }}</td>
+            <td>
+              <button class="btn btn-info" onclick="predict({{ student.id }})">
+                Prédire
+              </button>
+              <button
+                class="btn btn-warning"
+                onclick="editStudent({{ student.id }}, '{{ student.name }}', {{ student.age }}, {{ student.gender }}, {{ student.study_hours }}, {{ student.assignment_grade }}, {{ student.test_score }}, {{ student.quiz_score }}, {{ student.final_project_grade }})"
+              >
+                Modifier
+              </button>
+              <form
+                action="/delete/{{ student.id }}"
+                method="post"
+                style="display: inline"
+              >
+                <button class="btn btn-danger" type="submit">Supprimer</button>
+              </form>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+
+      <!-- Pop-up pour afficher la prédiction -->
+      <div id="result-popup" class="popup">
+        <div class="popup-content">
+          <span class="close" onclick="closePopup()">&times;</span>
+          <p id="result"></p>
+        </div>
+      </div>
+
+      <!-- Pop-up pour modifier un étudiant -->
+      <div id="edit-popup" class="popup">
+        <div class="popup-content">
+          <span class="close" onclick="closeEditPopup()">&times;</span>
+          <form id="editForm" action="" method="post">
+            <h2>Modifier un étudiant</h2>
+            <div class="form-group">
+              <label for="edit_name">Nom:</label>
+              <input
+                type="text"
+                class="form-control"
+                id="edit_name"
+                name="name"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="edit_age">Âge:</label>
+              <input
+                type="number"
+                class="form-control"
+                id="edit_age"
+                name="age"
+                max="25"
+                required
+              />
+              <div class="form-group">
+                <label for="edit_attempt_number">Numéro de tentative:</label>
+                <input
+                  type="number"
+                  class="form-control"
+                  id="edit_attempt_number"
+                  name="attempt_number"
+                  required
+                />
+              </div>
+
+              <small id="ageHelp" class="form-text text-muted"
+                >Âge maximum : 25 ans.</small
+              >
+            </div>
+            <div class="form-group">
+              <label for="edit_gender">Genre:</label>
+              <select
+                class="form-control"
+                id="edit_gender"
+                name="gender"
+                required
+              >
+                <option value="0">Féminin</option>
+                <option value="1">Masculin</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="edit_study_hours">Heures d'étude:</label>
+              <input
+                type="number"
+                step="0.1"
+                class="form-control"
+                id="edit_study_hours"
+                name="study_hours"
+                max="30"
+                required
+              />
+              <small id="studyHoursHelp" class="form-text text-muted"
+                >Maximum des heures d'étude : 30 heures.</small
+              >
+            </div>
+            <div class="form-group">
+              <label for="edit_assignment_grade">Note de devoir:</label>
+              <input
+                type="number"
+                step="0.1"
+                class="form-control"
+                id="edit_assignment_grade"
+                name="assignment_grade"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="edit_test_score">Score de test:</label>
+              <input
+                type="number"
+                step="0.1"
+                class="form-control"
+                id="edit_test_score"
+                name="test_score"
+                max="20"
+                required
+              />
+              <small id="testScoreHelp" class="form-text text-muted"
+                >Score de test maximum : 20.</small
+              >
+            </div>
+            <div class="form-group">
+              <label for="edit_quiz_score">Score de quiz:</label>
+              <input
+                type="number"
+                step="0.1"
+                class="form-control"
+                id="edit_quiz_score"
+                name="quiz_score"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="edit_final_project_grade"
+                >Note de projet final:</label
+              >
+              <input
+                type="number"
+                step="0.1"
+                class="form-control"
+                id="edit_final_project_grade"
+                name="final_project_grade"
+                required
+              />
+            </div>
+            <button type="submit" class="btn btn-success">Modifier</button>
+          </form>
+        </div>
+      </div>
     </div>
-    
 
-</body>
+    <script>
+      function openAddPopup() {
+        document.getElementById("add-popup").style.display = "block";
+      }
 
-<script>
-    function resetForm() {
-        document.getElementById("predictionForm").reset();
-        document.querySelector(".result-section").innerHTML = '<h3></h3>';
+      function closeAddPopup() {
+        document.getElementById("add-popup").style.display = "none";
+      }
 
-    }
-</script>
+      function predict(studentId) {
+        fetch(`/predict/${studentId}`)
+          .then((response) => response.json())
+          .then((data) => {
+            document.getElementById(
+              "result"
+            ).innerText = `Prédiction: ${data.prediction}`;
+            document.getElementById("result-popup").style.display = "block";
+          })
+          .catch((error) => console.error("Error:", error));
+      }
+
+      function closePopup() {
+        document.getElementById("result-popup").style.display = "none";
+      }
+
+      function editStudent(
+        id,
+        name,
+        age,
+        gender,
+        study_hours,
+        assignment_grade,
+        test_score,
+        quiz_score,
+        final_project_grade
+      ) {
+        document.getElementById("editForm").action = `/update/${id}`;
+        document.getElementById("edit_name").value = name;
+        document.getElementById("edit_age").value = age;
+        document.getElementById("edit_gender").value = gender;
+        document.getElementById("edit_study_hours").value = study_hours;
+        document.getElementById("edit_assignment_grade").value =
+          assignment_grade;
+        document.getElementById("edit_test_score").value = test_score;
+        document.getElementById("edit_quiz_score").value = quiz_score;
+        document.getElementById("edit_final_project_grade").value =
+          final_project_grade;
+        document.getElementById("edit-popup").style.display = "block";
+      }
+
+      function closeEditPopup() {
+        document.getElementById("edit-popup").style.display = "none";
+      }
+    </script>
+  </body>
 </html>
